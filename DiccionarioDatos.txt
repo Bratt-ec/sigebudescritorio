@@ -1,0 +1,75 @@
+proyectobiblioteca=# \d GestionPrestamo;
+                                              Tabla ½public.gestionprestamo+
+     Columna     |         Tipo          | Collation | Nullable |                         Default
+-----------------+-----------------------+-----------+----------+----------------------------------------------------------
+ codigo_prestamo | integer               |           | not null | nextval('gestionprestamo_codigo_prestamo_seq'::regclass)
+ fechaprestamo   | character varying(10) |           |          |
+ codigosocio     | integer               |           | not null | nextval('gestionprestamo_codigosocio_seq'::regclass)
+ observaciones   | character varying(30) |           |          |
+-ndices:
+    "gestionprestamo_pkey" PRIMARY KEY, btree (codigo_prestamo)
+
+
+proyectobiblioteca=# \d LibrosPrestados;
+                                        Tabla ½public.librosprestados+
+     Columna      |  Tipo   | Collation | Nullable |                          Default
+------------------+---------+-----------+----------+-----------------------------------------------------------
+ codlibroprestado | integer |           | not null | nextval('librosprestados_codlibroprestado_seq'::regclass)
+ codigo_libro     | integer |           | not null | nextval('librosprestados_codigo_libro_seq'::regclass)
+ codigo_prestamo  | integer |           | not null | nextval('librosprestados_codigo_prestamo_seq'::regclass)
+-ndices:
+    "librosprestados_pkey" PRIMARY KEY, btree (codlibroprestado)
+
+
+proyectobiblioteca=# \d LIBROS;
+                                           Tabla ½public.libros+
+   Columna    |         Tipo          | Collation | Nullable |                   Default
+--------------+-----------------------+-----------+----------+----------------------------------------------
+ codigo_libro | integer               |           | not null | nextval('libros_codigo_libro_seq'::regclass)
+ nombrelibro  | character varying(60) |           |          |
+ autor        | character varying(30) |           |          |
+ editorial    | character varying(30) |           |          |
+ tomo         | integer               |           |          |
+ edicion      | character varying(8)  |           |          |
+-ndices:
+    "libros_pkey" PRIMARY KEY, btree (codigo_libro)
+
+
+proyectobiblioteca=# \d SOCIOS;
+                                           Tabla ½public.socios+
+   Columna    |         Tipo          | Collation | Nullable |                   Default
+--------------+-----------------------+-----------+----------+----------------------------------------------
+ codigo_socio | integer               |           | not null | nextval('socios_codigo_socio_seq'::regclass)
+ cedulasocio  | character varying(10) |           |          |
+ apellido     | character varying(25) |           |          |
+ nombre       | character varying(30) |           |          |
+ edad         | integer               |           |          |
+-ndices:
+    "socios_pkey" PRIMARY KEY, btree (codigo_socio)
+
+proyectobiblioteca=# \d Usuarios;
+                       Tabla ½public.usuarios+
+  Columna   |         Tipo          | Collation | Nullable | Default
+------------+-----------------------+-----------+----------+---------
+ usuario    | character varying(10) |           | not null |
+ contrasena | character varying(10) |           |          |
+-ndices:
+    "usuarios_pkey" PRIMARY KEY, btree (usuario)
+
+
+proyectobiblioteca=#
+
+
+proyectobiblioteca=# \d librosseleccionados;
+                                         Tabla ½public.librosseleccionados+
+   Columna   |         Tipo          | Collation | Nullable |                        Default
+-------------+-----------------------+-----------+----------+-------------------------------------------------------
+ codigo_l    | integer               |           | not null | nextval('librosseleccionados_codigo_l_seq'::regclass)
+ nombrel     | character varying(25) |           |          |
+ autorl      | character varying(30) |           |          |
+ editorial_l | character varying(25) |           |          |
+ tomol       | character varying(2)  |           |          |
+ edicionl    | character varying(2)  |           |          |
+ codigo_sc   | character varying(3)  |           |          |
+-ndices:
+    "librosseleccionados_pkey" PRIMARY KEY, btree (codigo_l)
